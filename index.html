@@ -96,6 +96,10 @@ main.wrap{padding-top:56px;padding-bottom:56px;display:flex;flex-direction:colum
 .post{background:var(--bark2);border:2px solid var(--edge);border-radius:12px;padding:22px;display:flex;flex-direction:column;gap:8px}
 .post.main{border-color:var(--gold)}
 .post h3{font-size:22px}
+.catalog{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;background:var(--bark2);border:2px dashed var(--edge);border-radius:12px;padding:20px 22px;text-decoration:none;color:inherit}
+.catalog:hover{border-color:var(--gold)}
+.catalog b{display:block;font-size:19px;margin-bottom:4px}
+.catalog .go{font-weight:700;letter-spacing:1px;color:var(--gold);white-space:nowrap}
 .soon{margin-top:8px;display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:8px;background:#4A3729;font-weight:700;text-align:center;padding:0 10px}
 
 .board{background:repeating-linear-gradient(90deg,#6B4A33 0 38px,#5E412D 39px,#74513A 78px);border:8px solid var(--frame);border-radius:14px;padding:32px;display:flex;flex-direction:column;gap:22px}
@@ -218,6 +222,10 @@ footer{border-top:2px dashed var(--edge);padding:24px 20px 40px;font-size:14px;c
       <div class="post"><h3>Linux</h3><span class="muted">64-bit</span><span class="soon">Coming soon</span></div>
       <div class="post"><h3>macOS</h3><span class="muted">Intel and Apple Silicon</span><span class="soon">Coming later</span></div>
     </div>
+    <a class="catalog" href="https://www.tsomania.net/index.php" target="_blank" rel="noopener">
+      <span><b>Browse the catalog</b><span class="muted">Every object in The Sims Online, rares and holiday items too, over at TSOMania.</span></span>
+      <span class="go" aria-hidden="true">VISIT TSOMANIA &rarr;</span>
+    </a>
   </section>
 
   <section id="board" class="board" aria-labelledby="board-h">
@@ -233,7 +241,7 @@ footer{border-top:2px dashed var(--edge);padding:24px 20px 40px;font-size:14px;c
 
 <footer>
   Smoky Hollow is a fan project, not affiliated with Electronic Arts or Maxis. The Sims Online is a trademark of Electronic Arts.<br>
-  Runs on <a href="https://github.com/voicemxil/OpenSO">OpenSO</a>, built on <a href="https://github.com/riperiperi/FreeSO">FreeSO</a>. Leave the holler better than you found it.
+  Runs on <a href="https://github.com/voicemxil/OpenSO">OpenSO</a>, built on <a href="https://github.com/riperiperi/FreeSO">FreeSO</a>. Object catalog at <a href="https://www.tsomania.net/index.php">TSOMania</a>.<br>Leave the holler better than you found it.
 </footer>
 </body>
 </html>
