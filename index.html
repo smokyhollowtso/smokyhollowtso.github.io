@@ -92,6 +92,12 @@ main.wrap{padding-top:56px;padding-bottom:56px;display:flex;flex-direction:colum
 .notice p{margin:0;font-size:16px}
 .open{margin-top:auto;display:flex;align-items:center;gap:10px;font-weight:700}
 .open i{width:12px;height:12px;border-radius:50%;background:#2E8B4E}
+.open i.off{background:#C0392B}.open i.wait{background:#A8977A}
+.live{margin-top:auto;display:flex;flex-direction:column;gap:6px}
+.tdetail{font-size:14px;color:#5A4130}
+.spots{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:4px;font-size:15px}
+.spots li{display:flex;justify-content:space-between;gap:12px;border-top:1px dashed #C9B48F;padding-top:4px}
+.spots b{color:#8A4B17}
 
 .post{background:var(--bark2);border:2px solid var(--edge);border-radius:12px;padding:22px;display:flex;flex-direction:column;gap:8px}
 .post.main{border-color:var(--gold)}
@@ -192,7 +198,11 @@ footer{border-top:2px dashed var(--edge);padding:24px 20px 40px;font-size:14px;c
       <span class="kicker">NOTICE</span>
       <h3>Testing season</h3>
       <p>Smoky Hollow is invite-only while we tune money, skills and lot prices. Settings may change as we go.</p>
-      <div class="open"><i aria-hidden="true"></i>Open for testers</div>
+      <div class="live" aria-live="polite">
+        <div class="open"><i id="town-dot" aria-hidden="true"></i><span id="town-status">Checking on the town…</span></div>
+        <span id="town-detail" class="tdetail"></span>
+        <ul id="hot-spots" class="spots" aria-label="Busiest lots"></ul>
+      </div>
     </div>
   </section>
 
@@ -244,5 +254,31 @@ footer{border-top:2px dashed var(--edge);padding:24px 20px 40px;font-size:14px;c
   Smoky Hollow is a fan project, not affiliated with Electronic Arts or Maxis. The Sims Online is a trademark of Electronic Arts.<br>
   Runs on <a href="https://github.com/voicemxil/OpenSO">OpenSO</a>, built on <a href="https://github.com/riperiperi/FreeSO">FreeSO</a>. Object catalog at <a href="https://www.tsomania.net/index.php">TSOMania</a>.<br>Leave the holler better than you found it.
 </footer>
+<script>
+(function(){
+  var API='https://smokyhollowtso.duckdns.org/userapi/status';
+  var dot=document.getElementById('town-dot'), st=document.getElementById('town-status'),
+      det=document.getElementById('town-detail'), spots=document.getElementById('hot-spots');
+  function plural(n,w){return n+' '+w+(n===1?'':'s');}
+  function closed(){dot.className='off';st.textContent='The town is closed right now';det.textContent='Check back soon.';spots.innerHTML='';}
+  function load(){
+    var ctl=('AbortController' in window)?new AbortController():null;
+    var timer=setTimeout(function(){if(ctl)ctl.abort();},8000);
+    fetch(API,{cache:'no-store',signal:ctl?ctl.signal:undefined}).then(function(r){return r.json();}).then(function(s){
+      clearTimeout(timer);
+      var shard=(s.shards||[])[0]||{};
+      if(shard.status==='Down'||shard.status==='Closed'){closed();return;}
+      dot.className='';st.textContent='The town is open';
+      det.textContent=plural(s.playersOnline||0,'neighbor')+' online · '+plural(s.lotsOnline||0,'lot')+' open';
+      spots.innerHTML='';
+      (s.topLots||[]).forEach(function(l){
+        var li=document.createElement('li'),n=document.createElement('span'),c=document.createElement('b');
+        n.textContent=l.name||'A lot';c.textContent=l.players;li.appendChild(n);li.appendChild(c);spots.appendChild(li);
+      });
+    }).catch(function(){clearTimeout(timer);closed();});
+  }
+  dot.className='wait';load();setInterval(load,60000);
+})();
+</script>
 </body>
 </html>
