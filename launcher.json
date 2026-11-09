@@ -1,0 +1,35 @@
+{
+  "server": "http://smokyhollowtso.duckdns.org:9000",
+  "website": "https://smokyhollowtso.github.io/",
+  "catalog": "https://www.tsomania.net/index.php",
+  "tsoUrl": "https://archive.org/download/TheSimsOnline_201802/TSO.zip",
+
+  "client": {
+    "version": "v0.4.3-sh1",
+    "windows": {
+      "url": "https://github.com/smokyhollowtso/smokyhollowtso.github.io/releases/download/v0.4.3-sh1/SmokyHollow-client-win-x64.zip",
+      "exe": "SmokyHollow.exe"
+    }
+  },
+
+  "news": [
+    {
+      "date": "Nov 8, 2026",
+      "title": "Smoky Hollow opens for testing",
+      "body": "The first homestead is up on Grindstone Oasis and the jam stand is paying out.",
+      "tag": "red"
+    },
+    {
+      "date": "Coming soon",
+      "title": "Town lots that never close",
+      "body": "Public spots run by the town, open to everyone whether anybody lives there or not.",
+      "tag": "blue"
+    },
+    {
+      "date": "Wanted",
+      "title": "Neighbors",
+      "body": "Our first testers are moving in soon. Plenty of room by the creek.",
+      "tag": "green"
+    }
+  ]
+}
