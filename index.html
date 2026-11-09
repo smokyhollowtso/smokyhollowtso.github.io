@@ -95,6 +95,7 @@ main.wrap{padding-top:56px;padding-bottom:56px;display:flex;flex-direction:colum
 
 .post{background:var(--bark2);border:2px solid var(--edge);border-radius:12px;padding:22px;display:flex;flex-direction:column;gap:8px}
 .post.main{border-color:var(--gold)}
+.post .btn{margin-top:8px;font-size:16px;min-height:48px}
 .post h3{font-size:22px}
 .catalog{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;background:var(--bark2);border:2px dashed var(--edge);border-radius:12px;padding:20px 22px;text-decoration:none;color:inherit}
 .catalog:hover{border-color:var(--gold)}
@@ -182,9 +183,9 @@ footer{border-top:2px dashed var(--edge);padding:24px 20px 40px;font-size:14px;c
       <span class="kicker">RANGER STATION</span>
       <h2 id="visit-h">Visitor information</h2>
       <ol class="steps">
-        <li><span class="n">1</span><div><b>Get an invite from renegade</b><span class="d">You'll get your account and the town's address.</span></div></li>
-        <li><span class="n">2</span><div><b>Install the game</b><span class="d">Testers use the OpenSO launcher for now. The Smoky Hollow launcher is on the way.</span></div></li>
-        <li><span class="n">3</span><div><b>Head up the holler</b><span class="d">Press F1 at login, enter the address from your invite, and make your sim.</span></div></li>
+        <li><span class="n">1</span><div><b>Get an invite from renegade</b><span class="d">You'll get the invite key you need to sign up.</span></div></li>
+        <li><span class="n">2</span><div><b>Get the launcher</b><span class="d">Download the Smoky Hollow launcher below, then press Register in it to sign the guest book.</span></div></li>
+        <li><span class="n">3</span><div><b>Head up the holler</b><span class="d">Press INSTALL, then PLAY, and log in with the name you picked. Make your sim and pick a lot.</span></div></li>
       </ol>
     </div>
     <div class="notice">
@@ -199,7 +200,7 @@ footer{border-top:2px dashed var(--edge);padding:24px 20px 40px;font-size:14px;c
     <div class="intro">
       <span class="kicker">REGISTER</span>
       <h2 id="reg-h">Sign the guest book</h2>
-      <p>Make your Smoky Hollow account. You'll need the invite key from whoever brought you up the holler.</p>
+      <p>Make your Smoky Hollow account in the launcher. Press Register at the top, and have the invite key from whoever brought you up the holler.</p>
       <p style="font-size:15px">Usernames are lowercase letters, numbers and underscores, 3 to 24 characters. Your sim's name comes later, in the game.</p>
     </div>
     <form class="guest" aria-labelledby="reg-h" onsubmit="return false">
@@ -211,14 +212,14 @@ footer{border-top:2px dashed var(--edge);padding:24px 20px 40px;font-size:14px;c
         <div class="f"><label for="r-key">Invite key</label><input id="r-key" type="text"></div>
         <button type="submit">CREATE MY ACCOUNT</button>
       </fieldset>
-      <p class="wait">Online sign-up opens soon. Until then, renegade sets up your account with your invite.</p>
+      <p class="wait">Sign-up on the website opens soon. For now, sign the guest book in the launcher.</p>
     </form>
   </section>
 
   <section id="post" aria-labelledby="post-h" style="display:flex;flex-direction:column;gap:20px">
     <div class="head"><span class="kicker">TRADING POST</span><h2 id="post-h">Get the game</h2></div>
     <div class="grid3">
-      <div class="post main"><h3>Windows</h3><span class="muted">Windows 10 or 11, 64-bit</span><span class="soon">Launcher coming soon</span></div>
+      <div class="post main"><h3>Windows</h3><span class="muted">Windows 10 or 11, 64-bit</span><a class="btn" href="https://github.com/smokyhollowtso/smokyhollowtso.github.io/releases/download/v0.4.3-sh2/SmokyHollowLauncher.exe">DOWNLOAD LAUNCHER</a><span class="muted" style="font-size:13px">If Windows says it protected your PC, click More info, then Run anyway.</span></div>
       <div class="post"><h3>Linux</h3><span class="muted">64-bit</span><span class="soon">Coming soon</span></div>
       <div class="post"><h3>macOS</h3><span class="muted">Intel and Apple Silicon</span><span class="soon">Coming later</span></div>
     </div>
