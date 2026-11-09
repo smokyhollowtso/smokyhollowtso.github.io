@@ -5,9 +5,9 @@
   "tsoUrl": "https://archive.org/download/TheSimsOnline_201802/TSO.zip",
 
   "client": {
-    "version": "v0.4.3-sh1",
+    "version": "v0.4.3-sh2",
     "windows": {
-      "url": "https://github.com/smokyhollowtso/smokyhollowtso.github.io/releases/download/v0.4.3-sh1/SmokyHollow-client-win-x64.zip",
+      "url": "https://github.com/smokyhollowtso/smokyhollowtso.github.io/releases/download/v0.4.3-sh2/SmokyHollow-client-win-x64.zip",
       "exe": "SmokyHollow.exe"
     }
   },
