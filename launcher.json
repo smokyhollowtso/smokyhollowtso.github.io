@@ -8,9 +8,23 @@
     "windows": {
       "url": "https://github.com/smokyhollowtso/smokyhollowtso.github.io/releases/download/v0.4.3-sh3/SmokyHollow-client-win-x64.zip",
       "exe": "SmokyHollow.exe"
+    },
+    "macArm64": {
+      "url": "https://github.com/smokyhollowtso/smokyhollow-game/releases/download/v0.4.3-sh4/SmokyHollow-client-osx-arm64.zip",
+      "exe": "SmokyHollow.app/Contents/MacOS/SmokyHollow"
+    },
+    "macX64": {
+      "url": "https://github.com/smokyhollowtso/smokyhollow-game/releases/download/v0.4.3-sh4/SmokyHollow-client-osx-x64.zip",
+      "exe": "SmokyHollow.app/Contents/MacOS/SmokyHollow"
     }
   },
   "news": [
+    {
+      "date": "Nov 9, 2026",
+      "title": "Smoky Hollow is on the Mac",
+      "body": "Mac neighbors can grab the launcher from the website's Trading Post. It works on Apple-chip and Intel Macs.",
+      "tag": "blue"
+    },
     {
       "date": "Nov 9, 2026",
       "title": "Skills just got a lot faster",
