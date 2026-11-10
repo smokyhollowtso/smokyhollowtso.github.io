@@ -241,7 +241,7 @@ footer{border-top:2px dashed var(--edge);padding:24px 20px 40px;font-size:14px;c
 
   <section id="board" class="board" aria-labelledby="board-h">
     <h2 id="board-h">Town board</h2>
-    <div class="grid3">
+    <div class="grid3" id="board-notes">
       <article class="note"><span class="tack" style="background:#C0392B" aria-hidden="true"></span><time class="when" datetime="2026-11-08">NOV 8, 2026</time><h3>Smoky Hollow opens for testing</h3><p>The first homestead is up on Grindstone Oasis and the jam stand is paying out.</p></article>
       <article class="note"><span class="tack" style="background:#2E6DA4" aria-hidden="true"></span><span class="when">COMING SOON</span><h3>Town lots that never close</h3><p>Public spots run by the town, open to everyone whether anybody lives there or not.</p></article>
       <article class="note"><span class="tack" style="background:#2E8B4E" aria-hidden="true"></span><span class="when">WANTED</span><h3>Neighbors</h3><p>Our first testers are moving in soon. Plenty of room by the creek.</p></article>
@@ -278,6 +278,26 @@ footer{border-top:2px dashed var(--edge);padding:24px 20px 40px;font-size:14px;c
     }).catch(function(){clearTimeout(timer);closed();});
   }
   dot.className='wait';load();setInterval(load,60000);
+})();
+</script>
+<script>
+(function(){
+  // The Town board reads the same news as the launcher (launcher.json), so one upload updates both.
+  var box=document.getElementById('board-notes'); if(!box||!window.fetch) return;
+  var colors={red:'#C0392B',blue:'#2E6DA4',green:'#2E8B4E',gold:'#C8952F'};
+  fetch('launcher.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(m){
+    var news=(m&&m.news)||[]; if(!news.length) return;
+    box.innerHTML='';
+    news.forEach(function(n){
+      var a=document.createElement('article'); a.className='note';
+      var tack=document.createElement('span'); tack.className='tack'; tack.setAttribute('aria-hidden','true');
+      tack.style.background=colors[(n.tag||'').toLowerCase()]||colors.red; a.appendChild(tack);
+      if(n.date){var w=document.createElement('span'); w.className='when'; w.textContent=String(n.date).toUpperCase(); a.appendChild(w);}
+      var h=document.createElement('h3'); h.textContent=n.title||''; a.appendChild(h);
+      if(n.body){var b=document.createElement('p'); b.textContent=n.body; a.appendChild(b);}
+      box.appendChild(a);
+    });
+  }).catch(function(){});
 })();
 </script>
 </body>
