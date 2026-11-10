@@ -63,6 +63,7 @@ nav a.navcta:hover{background:#FFD584;color:var(--ink)}
 .guest button{grid-column:1/-1;min-height:52px;border-radius:8px;border:0;border-bottom:4px solid #1E3324;background:var(--pine);color:var(--cream);font-family:'Alfa Slab One',Georgia,serif;font-size:18px;letter-spacing:1px}
 .guest button:disabled{opacity:.75;cursor:not-allowed}
 .guest .wait{grid-column:1/-1;margin:0;font-size:15px;font-weight:600;color:#6B3E14}
+.guest .wait.good{color:#2F4A35}.guest .wait.bad{color:#A3301F}
 
 main.wrap{padding-top:56px;padding-bottom:56px;display:flex;flex-direction:column;gap:64px}
 .head{display:flex;flex-direction:column;gap:6px}
@@ -210,26 +211,24 @@ footer{border-top:2px dashed var(--edge);padding:24px 20px 40px;font-size:14px;c
     <div class="intro">
       <span class="kicker">REGISTER</span>
       <h2 id="reg-h">Sign the guest book</h2>
-      <p>Make your Smoky Hollow account in the launcher. Press Register at the top, and have the invite key from whoever brought you up the holler.</p>
+      <p>Make your Smoky Hollow account right here, or with Register in the launcher. You&rsquo;ll need the invite key from whoever brought you up the holler.</p>
       <p style="font-size:15px">Usernames are lowercase letters, numbers and underscores, 3 to 24 characters. Your sim's name comes later, in the game.</p>
     </div>
-    <form class="guest" aria-labelledby="reg-h" onsubmit="return false">
-      <fieldset disabled style="display:contents;border:0;margin:0;padding:0">
-        <legend>Create an account</legend>
-        <div class="f"><label for="r-user">Username</label><input id="r-user" type="text" autocomplete="username"></div>
-        <div class="f"><label for="r-email">Email</label><input id="r-email" type="email" autocomplete="email"></div>
-        <div class="f"><label for="r-pass">Password</label><input id="r-pass" type="password" autocomplete="new-password"></div>
-        <div class="f"><label for="r-key">Invite key</label><input id="r-key" type="text"></div>
-        <button type="submit">CREATE MY ACCOUNT</button>
-      </fieldset>
-      <p class="wait">Sign-up on the website opens soon. For now, sign the guest book in the launcher.</p>
+    <form class="guest" id="guest" aria-labelledby="reg-h" novalidate>
+      <div class="f"><label for="r-user">Username</label><input id="r-user" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" maxlength="24" required></div>
+      <div class="f"><label for="r-email">Email</label><input id="r-email" type="email" autocomplete="email" required></div>
+      <div class="f"><label for="r-pass">Password</label><input id="r-pass" type="password" autocomplete="new-password" required></div>
+      <div class="f"><label for="r-pass2">Password again</label><input id="r-pass2" type="password" autocomplete="new-password" required></div>
+      <div class="f" style="grid-column:1/-1"><label for="r-key">Invite key</label><input id="r-key" type="text" autocapitalize="none" spellcheck="false" required></div>
+      <button type="submit" id="r-go">CREATE MY ACCOUNT</button>
+      <p class="wait" id="r-msg" role="status" aria-live="polite">Get the invite key from xX Simon Xx.</p>
     </form>
   </section>
 
   <section id="post" aria-labelledby="post-h" style="display:flex;flex-direction:column;gap:20px">
     <div class="head"><span class="kicker">TRADING POST</span><h2 id="post-h">Get the game</h2></div>
     <div class="grid3">
-      <div class="post main"><h3>Windows</h3><span class="muted">Windows 10 or 11, 64-bit</span><a class="btn" href="https://github.com/smokyhollowtso/smokyhollowtso.github.io/releases/download/v0.4.3-sh2/SmokyHollowLauncher.exe">DOWNLOAD LAUNCHER</a><span class="muted" style="font-size:13px">If Windows says it protected your PC, click More info, then Run anyway.</span></div>
+      <div class="post main"><h3>Windows</h3><span class="muted">Windows 10 or 11, 64-bit</span><a class="btn" href="https://github.com/smokyhollowtso/smokyhollowtso.github.io/releases/download/v0.4.3-sh3/SmokyHollowLauncher.exe">DOWNLOAD LAUNCHER</a><span class="muted" style="font-size:13px">If Windows says it protected your PC, click More info, then Run anyway.</span></div>
       <div class="post"><h3>Linux</h3><span class="muted">64-bit</span><span class="soon">Coming soon</span></div>
       <div class="post main"><h3>Mac</h3><span class="muted">macOS 13 or newer, Apple chip or Intel</span><a class="btn" href="https://github.com/smokyhollowtso/smokyhollow-game/releases/download/v0.4.3-sh4/SmokyHollowLauncher-mac.zip">DOWNLOAD LAUNCHER</a><span class="muted" style="font-size:13px">Drag Smoky Hollow into Applications and open it. If your Mac says it can&rsquo;t check it, open System Settings &rarr; Privacy &amp; Security, scroll down, and click Open Anyway.</span></div>
     </div>
@@ -298,6 +297,42 @@ footer{border-top:2px dashed var(--edge);padding:24px 20px 40px;font-size:14px;c
       box.appendChild(a);
     });
   }).catch(function(){});
+})();
+</script>
+<script>
+(function(){
+  // Guest book: signs people up straight with the town, the same way the launcher does.
+  var API='https://smokyhollowtso.duckdns.org/userapi/registration';
+  var f=document.getElementById('guest'); if(!f||!window.fetch) return;
+  var $=function(id){return document.getElementById(id);}, msg=$('r-msg'), go=$('r-go');
+  function say(t,k){msg.textContent=t;msg.className='wait'+(k?' '+k:'');}
+  var errs={user_short:'Usernames need at least 3 characters.',user_long:'Usernames can be 24 characters at most.',
+    user_invalid:'Usernames use lowercase letters, numbers and underscores, and can\u2019t start with an underscore.',
+    pass_required:'Pick a password.',email_invalid:'That email address doesn\u2019t look right.',
+    user_exists:'That username or email is already taken.',ip_banned:'Sign-ups from this connection aren\u2019t allowed.',
+    registrations_too_frequent:'Someone just made an account from here. Wait a minute and try again.',
+    too_many_accounts:'This home already has 2 Smoky Hollow accounts. If someone else here wants to play, ask xX Simon Xx.'};
+  f.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var u=$('r-user').value.trim().toLowerCase(), e=$('r-email').value.trim(), p=$('r-pass').value, p2=$('r-pass2').value, k=$('r-key').value.trim();
+    var bad=!/^[a-z0-9][a-z0-9_]{2,23}$/.test(u)?'Usernames are 3 to 24 lowercase letters, numbers or _, and start with a letter or number.':
+      (e.indexOf('@')<1||e.indexOf('.')<0)?'That email address doesn\u2019t look right.':
+      p.length<6?'Pick a password with at least 6 characters.':
+      p!==p2?'The two passwords don\u2019t match.':
+      !k?'Enter the invite key from the friend who invited you.':null;
+    if(bad){say(bad,'bad');return;}
+    go.disabled=true; say('Signing you in to the guest book\u2026');
+    var body=new URLSearchParams({username:u,email:e,password:p,key:k});
+    fetch(API,{method:'POST',body:body}).then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j};});})
+    .then(function(x){
+      var j=x.j||{};
+      if(j.error){say(j.error==='key_wrong'?'That invite key isn\u2019t right. Ask the friend who invited you.':(errs[j.error_description]||'Sign-up didn\u2019t go through. Try again in a little while.'),'bad');return;}
+      if(!x.ok){say('The town office said no. Try again in a little while.','bad');return;}
+      say('Welcome to Smoky Hollow, '+u+'! Download the launcher below, then log in with that name and password.','good');
+      $('r-pass').value='';$('r-pass2').value='';
+    }).catch(function(){say('The town didn\u2019t answer. It may be closed right now. Try again later.','bad');})
+    .then(function(){go.disabled=false;});
+  });
 })();
 </script>
 </body>
