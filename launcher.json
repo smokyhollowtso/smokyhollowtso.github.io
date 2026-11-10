@@ -4,9 +4,9 @@
   "catalog": "https://www.tsomania.net/index.php",
   "tsoUrl": "https://archive.org/download/TheSimsOnline_201802/TSO.zip",
   "client": {
-    "version": "v0.4.3-sh3",
+    "version": "v0.4.3-sh5",
     "windows": {
-      "url": "https://github.com/smokyhollowtso/smokyhollowtso.github.io/releases/download/v0.4.3-sh3/SmokyHollow-client-win-x64.zip",
+      "url": "https://github.com/smokyhollowtso/smokyhollowtso.github.io/releases/download/v0.4.3-sh5/SmokyHollow-client-win-x64.zip",
       "exe": "SmokyHollow.exe"
     },
     "macArm64": {
@@ -28,7 +28,7 @@
     {
       "date": "Nov 9, 2026",
       "title": "Skills just got a lot faster",
-      "body": "A sim skilling alone now maxes a skill in about 8 hours, and skill lots and groups are faster still. Press UPDATE in the launcher to get it.",
+      "body": "A sim skilling alone now maxes a skill in about 8 hours, and skill lots and groups are faster still. Press UPDATE in the launcher to get it. If you already updated, press it once more.",
       "tag": "gold"
     },
     {
