@@ -255,7 +255,7 @@ footer{border-top:2px dashed var(--edge);padding:24px 20px 40px;font-size:14px;c
 </footer>
 <script>
 (function(){
-  var API='https://smokyhollowtso.duckdns.org/userapi/status';
+  var API='https://play.smokyhollowtso.com/userapi/status';
   var dot=document.getElementById('town-dot'), st=document.getElementById('town-status'),
       det=document.getElementById('town-detail'), spots=document.getElementById('hot-spots');
   function plural(n,w){return n+' '+w+(n===1?'':'s');}
@@ -302,7 +302,7 @@ footer{border-top:2px dashed var(--edge);padding:24px 20px 40px;font-size:14px;c
 <script>
 (function(){
   // Guest book: signs people up straight with the town, the same way the launcher does.
-  var API='https://smokyhollowtso.duckdns.org/userapi/registration';
+  var API='https://play.smokyhollowtso.com/userapi/registration';
   var f=document.getElementById('guest'); if(!f||!window.fetch) return;
   var $=function(id){return document.getElementById(id);}, msg=$('r-msg'), go=$('r-go');
   function say(t,k){msg.textContent=t;msg.className='wait'+(k?' '+k:'');}

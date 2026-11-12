@@ -1,12 +1,12 @@
 {
-  "server": "http://smokyhollowtso.duckdns.org:9000",
-  "website": "https://smokyhollowtso.github.io/",
+  "server": "https://play.smokyhollowtso.com",
+  "website": "https://smokyhollowtso.com/",
   "catalog": "https://www.tsomania.net/index.php",
   "tsoUrl": "https://archive.org/download/TheSimsOnline_201802/TSO.zip",
   "client": {
-    "version": "v0.4.3-sh5",
+    "version": "v0.4.3-sh6",
     "windows": {
-      "url": "https://github.com/smokyhollowtso/smokyhollowtso.github.io/releases/download/v0.4.3-sh5/SmokyHollow-client-win-x64.zip",
+      "url": "https://github.com/smokyhollowtso/smokyhollowtso.github.io/releases/download/v0.4.3-sh6/SmokyHollow-client-win-x64.zip",
       "exe": "SmokyHollow.exe"
     },
     "macArm64": {
@@ -20,16 +20,16 @@
   },
   "news": [
     {
+      "date": "Nov 11, 2026",
+      "title": "Skill together, skill faster",
+      "body": "Skill speeds now match the classic feel: about 149% skilling alone at a skill house, and every friend who joins speeds everyone up. Press UPDATE in the launcher to get it, along with a new start screen and safer logins.",
+      "tag": "gold"
+    },
+    {
       "date": "Nov 9, 2026",
       "title": "Smoky Hollow is on the Mac",
       "body": "Mac neighbors can grab the launcher from the website's Trading Post. It works on Apple-chip and Intel Macs.",
       "tag": "blue"
-    },
-    {
-      "date": "Nov 9, 2026",
-      "title": "Skills just got a lot faster",
-      "body": "A sim skilling alone now maxes a skill in about 8 hours, and skill lots and groups are faster still. Press UPDATE in the launcher to get it. If you already updated, press it once more.",
-      "tag": "gold"
     },
     {
       "date": "Nov 8, 2026",
