@@ -10,11 +10,11 @@
       "exe": "SmokyHollow.exe"
     },
     "macArm64": {
-      "url": "https://github.com/smokyhollowtso/smokyhollow-game/releases/download/v0.4.3-sh4/SmokyHollow-client-osx-arm64.zip",
+      "url": "https://github.com/smokyhollowtso/smokyhollow-game/releases/download/v0.4.3-sh7/SmokyHollow-client-osx-arm64.zip",
       "exe": "SmokyHollow.app/Contents/MacOS/SmokyHollow"
     },
     "macX64": {
-      "url": "https://github.com/smokyhollowtso/smokyhollow-game/releases/download/v0.4.3-sh4/SmokyHollow-client-osx-x64.zip",
+      "url": "https://github.com/smokyhollowtso/smokyhollow-game/releases/download/v0.4.3-sh7/SmokyHollow-client-osx-x64.zip",
       "exe": "SmokyHollow.app/Contents/MacOS/SmokyHollow"
     }
   },
