@@ -4,21 +4,31 @@
   "catalog": "https://www.tsomania.net/index.php",
   "tsoUrl": "https://archive.org/download/TheSimsOnline_201802/TSO.zip",
   "client": {
-    "version": "v0.4.3-sh7",
+    "version": "v0.4.3-sh8",
     "windows": {
-      "url": "https://github.com/smokyhollowtso/smokyhollowtso.github.io/releases/download/v0.4.3-sh7/SmokyHollow-client-win-x64.zip",
+      "url": "https://github.com/smokyhollowtso/smokyhollowtso.github.io/releases/download/v0.4.3-sh8/SmokyHollow-client-win-x64.zip",
       "exe": "SmokyHollow.exe"
     },
     "macArm64": {
-      "url": "https://github.com/smokyhollowtso/smokyhollow-game/releases/download/v0.4.3-sh7/SmokyHollow-client-osx-arm64.zip",
+      "url": "https://github.com/smokyhollowtso/smokyhollow-game/releases/download/v0.4.3-sh8/SmokyHollow-client-osx-arm64.zip",
       "exe": "SmokyHollow.app/Contents/MacOS/SmokyHollow"
     },
     "macX64": {
-      "url": "https://github.com/smokyhollowtso/smokyhollow-game/releases/download/v0.4.3-sh7/SmokyHollow-client-osx-x64.zip",
+      "url": "https://github.com/smokyhollowtso/smokyhollow-game/releases/download/v0.4.3-sh8/SmokyHollow-client-osx-x64.zip",
       "exe": "SmokyHollow.app/Contents/MacOS/SmokyHollow"
+    },
+    "linux": {
+      "url": "https://github.com/smokyhollowtso/smokyhollow-game/releases/download/v0.4.3-sh8/SmokyHollow-client-linux-x64.zip",
+      "exe": "SmokyHollow"
     }
   },
   "news": [
+    {
+      "date": "Nov 14, 2026",
+      "title": "Wall art and lots that never close",
+      "body": "Eight Smoky Hollow paintings are in the buy catalog under Decorative: Davy Crockett, Devil Anse Hatfield, Randolph McCoy, Billy the Kid, Daniel Boone, old maps of Tennessee and North Carolina, and a Smokies sunset. Store and skill lots now stay open around the clock. Linux players can join in too. Press UPDATE in the launcher to get it.",
+      "tag": "gold"
+    },
     {
       "date": "Nov 11, 2026",
       "title": "Skill together, skill faster",
@@ -36,12 +46,6 @@
       "title": "Smoky Hollow opens for testing",
       "body": "The first homestead is up on Grindstone Oasis and the jam stand is paying out.",
       "tag": "red"
-    },
-    {
-      "date": "Coming soon",
-      "title": "Town lots that never close",
-      "body": "Public spots run by the town, open to everyone whether anybody lives there or not.",
-      "tag": "blue"
     },
     {
       "date": "Wanted",
