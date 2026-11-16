@@ -4,25 +4,31 @@
   "catalog": "https://www.tsomania.net/index.php",
   "tsoUrl": "https://archive.org/download/TheSimsOnline_201802/TSO.zip",
   "client": {
-    "version": "v0.4.3-sh8",
+    "version": "v0.4.3-sh9",
     "windows": {
-      "url": "https://github.com/smokyhollowtso/smokyhollowtso.github.io/releases/download/v0.4.3-sh8/SmokyHollow-client-win-x64.zip",
+      "url": "https://github.com/smokyhollowtso/smokyhollowtso.github.io/releases/download/v0.4.3-sh9/SmokyHollow-client-win-x64.zip",
       "exe": "SmokyHollow.exe"
     },
     "macArm64": {
-      "url": "https://github.com/smokyhollowtso/smokyhollow-game/releases/download/v0.4.3-sh8/SmokyHollow-client-osx-arm64.zip",
+      "url": "https://github.com/smokyhollowtso/smokyhollow-game/releases/download/v0.4.3-sh9/SmokyHollow-client-osx-arm64.zip",
       "exe": "SmokyHollow.app/Contents/MacOS/SmokyHollow"
     },
     "macX64": {
-      "url": "https://github.com/smokyhollowtso/smokyhollow-game/releases/download/v0.4.3-sh8/SmokyHollow-client-osx-x64.zip",
+      "url": "https://github.com/smokyhollowtso/smokyhollow-game/releases/download/v0.4.3-sh9/SmokyHollow-client-osx-x64.zip",
       "exe": "SmokyHollow.app/Contents/MacOS/SmokyHollow"
     },
     "linux": {
-      "url": "https://github.com/smokyhollowtso/smokyhollow-game/releases/download/v0.4.3-sh8/SmokyHollow-client-linux-x64.zip",
+      "url": "https://github.com/smokyhollowtso/smokyhollow-game/releases/download/v0.4.3-sh9/SmokyHollow-client-linux-x64.zip",
       "exe": "SmokyHollow"
     }
   },
   "news": [
+    {
+      "date": "Nov 15, 2026",
+      "title": "The lodge is open",
+      "body": "New in the catalog: bronze statues of Davy Crockett, Daniel Boone and John Sevier, a black bear and cub, bear and turkey mounts, crossed rifles, a coat rack and an antler lantern sconce. Old Man Harlan will swap tales with you when you're lonesome. Skill with the Lodge Bookshelf, Chess Table and Wall Mirror, and three new tip jars. Skill lots are the place to skill, money lots pay more, and new neighbors get a head start on Welcome lots. Press UPDATE in the launcher to get it.",
+      "tag": "gold"
+    },
     {
       "date": "Nov 14, 2026",
       "title": "Wall art and lots that never close",
