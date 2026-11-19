@@ -24,6 +24,12 @@
   },
   "news": [
     {
+      "date": "Nov 18, 2026",
+      "title": "Join us on Discord",
+      "body": "Smoky Hollow has a Discord! Ask for an invite code, share screenshots, show off your lot and report bugs: https://discord.gg/TBDPMAWUzk",
+      "tag": "gold"
+    },
+    {
       "date": "Nov 17, 2026",
       "title": "Wagons roll into town",
       "body": "Two pioneer wagons are in the catalog under Decorative: the canvas-topped Covered Wagon and the loaded-up Cargo Wagon. Park one out front of the lodge. Press UPDATE in the launcher to get them.",
