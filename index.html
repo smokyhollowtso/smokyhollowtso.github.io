@@ -142,6 +142,7 @@ footer{border-top:2px dashed var(--edge);padding:24px 20px 40px;font-size:14px;c
       <a href="#post"><span class="blaze" style="background:#7CC47F" aria-hidden="true"></span>Download</a>
       <a href="#board"><span class="blaze" style="background:#F4E9D2" aria-hidden="true"></span>Town Board</a>
       <a href="https://discord.gg/TBDPMAWUzk" target="_blank" rel="noopener"><span class="blaze" style="background:#8C9EFF" aria-hidden="true"></span>Discord</a>
+      <a href="#password">Password</a>
       <a href="#register" class="navcta">Register</a>
     </nav>
   </div>
@@ -223,6 +224,22 @@ footer{border-top:2px dashed var(--edge);padding:24px 20px 40px;font-size:14px;c
       <div class="f" style="grid-column:1/-1"><label for="r-key">Invite key</label><input id="r-key" type="text" autocapitalize="none" spellcheck="false" required></div>
       <button type="submit" id="r-go">CREATE MY ACCOUNT</button>
       <p class="wait" id="r-msg" role="status" aria-live="polite">Get the invite key from xX Simon Xx.</p>
+    </form>
+  </section>
+
+  <section id="password" class="reg" aria-labelledby="pw-h">
+    <div class="intro">
+      <span class="kicker">RANGER STATION</span>
+      <h2 id="pw-h">Change your password</h2>
+      <p>Got a temporary password from xX Simon Xx, or just want a new one? Change it here.</p>
+    </div>
+    <form class="guest" id="pwform" aria-labelledby="pw-h" novalidate>
+      <div class="f" style="grid-column:1/-1"><label for="p-user">Username</label><input id="p-user" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" maxlength="24" required></div>
+      <div class="f" style="grid-column:1/-1"><label for="p-old">Current password</label><input id="p-old" type="password" autocomplete="current-password" required></div>
+      <div class="f"><label for="p-new">New password</label><input id="p-new" type="password" autocomplete="new-password" required></div>
+      <div class="f"><label for="p-new2">New password again</label><input id="p-new2" type="password" autocomplete="new-password" required></div>
+      <button type="submit" id="p-go">CHANGE PASSWORD</button>
+      <p class="wait" id="p-msg" role="status" aria-live="polite">Use the username you log in with, not your sim&rsquo;s name.</p>
     </form>
   </section>
 
@@ -332,6 +349,30 @@ footer{border-top:2px dashed var(--edge);padding:24px 20px 40px;font-size:14px;c
       if(!x.ok){say('The town office said no. Try again in a little while.','bad');return;}
       say('Welcome to Smoky Hollow, '+u+'! Download the launcher below, then log in with that name and password.','good');
       $('r-pass').value='';$('r-pass2').value='';
+    }).catch(function(){say('The town didn\u2019t answer. It may be closed right now. Try again later.','bad');})
+    .then(function(){go.disabled=false;});
+  });
+})();
+</script>
+<script>
+(function(){
+  // Change password: needs the current password, so only the account owner can do it.
+  var API='https://play.smokyhollowtso.com/userapi/password';
+  var f=document.getElementById('pwform'); if(!f||!window.fetch) return;
+  var $=function(id){return document.getElementById(id);}, msg=$('p-msg'), go=$('p-go');
+  function say(t,k){msg.textContent=t;msg.className='wait'+(k?' '+k:'');}
+  var errs={incorrect_password:'That current password isn\u2019t right.',user_invalid:'There\u2019s no account with that username.',
+    missing_fields:'Fill in every box.',missing_confirmation_token:'Password changes are done by email right now. Ask xX Simon Xx.'};
+  f.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var u=$('p-user').value.trim().toLowerCase(), o=$('p-old').value, n=$('p-new').value, n2=$('p-new2').value;
+    var bad=!u?'Enter your username.':!o?'Enter your current password.':n.length<6?'Pick a new password with at least 6 characters.':n!==n2?'The two new passwords don\u2019t match.':null;
+    if(bad){say(bad,'bad');return;}
+    go.disabled=true; say('Changing your password\u2026');
+    fetch(API,{method:'POST',body:new URLSearchParams({username:u,old_password:o,new_password:n})})
+    .then(function(r){return r.json();}).then(function(j){
+      if(j&&j.status==='success'){say('Done! Log in with your new password next time.','good');$('p-old').value='';$('p-new').value='';$('p-new2').value='';return;}
+      say((j&&errs[j.error_description])||'That didn\u2019t go through. Try again in a little while.','bad');
     }).catch(function(){say('The town didn\u2019t answer. It may be closed right now. Try again later.','bad');})
     .then(function(){go.disabled=false;});
   });
